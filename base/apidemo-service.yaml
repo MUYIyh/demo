@@ -11,6 +11,6 @@ spec:
     - name: apidemoport
       port: 10088
       targetPort: 10088
-      nodePort: 30080
+      nodePort: 30180
   selector:
     app: apidemo

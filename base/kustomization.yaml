@@ -5,5 +5,5 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 192.168.31.104/apidemo/apidemo
+- name: 192.168.15.101:90/library/apidemo
   newTag: ef7300a0
