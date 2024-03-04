@@ -1,0 +1,11 @@
+name: PrintName
+on: push
+jobs: 
+  print-name: 
+    runs-on: ubuntu-latest 
+    steps: 
+    - name: Print a name 
+      env: 
+        name: "YH"
+      run: |
+           echo $name
