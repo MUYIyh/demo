@@ -2,9 +2,9 @@ workflow:  #设置工作流
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'  #如果代码分支为master则使用以下环境变量
       variables:
-        registry: $ci_registry  #镜像仓库地址，gitlab配置全局变量
-        registry_name: $ci_registry_name #镜像仓库登录用户，gitlab配置全局变量
-        registry_passwd: $ci_registry_passwd #镜像仓库登录密码，gitlab配置全局变量
+        registry: $CI_REGISTRY  #镜像仓库地址，gitlab配置全局变量
+        registry_name: $CI_REGISTRY_USER #镜像仓库登录用户，gitlab配置全局变量
+        registry_passwd: $CI_REGISTRY_PASSWORD #镜像仓库登录密码，gitlab配置全局变量
 
 variables:  #
   app_name: $CI_PROJECT_NAME #项目名，gitlab项目仓库名，gitlab内置变量
@@ -43,7 +43,7 @@ docker tag:
 docker push:
   stage: build
   script:
-    - docker login -u $ci_registry_name -p $ci_registry_passwd $registry #登录镜像仓库
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $registry #登录镜像仓库
     - docker push $registry/$app_name/$app_name:$app_version #推送镜像至镜像仓库
     - docker logout #登出镜像仓库
   needs:
